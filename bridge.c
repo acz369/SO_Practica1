@@ -167,8 +167,12 @@ static long bridge_ioctl(struct file *f, unsigned int cmd, unsigned long arg){
 	    printk(KERN_INFO "List state succesfully sended.\n");
 	    break;
 	case BRIDGE_DESTROY_L:
-
-		kfree(&stack);
+		while(list_empty(&list) != 0){
+			tmp_element = list_first_entry(&list, struct string_node, list);
+        	list_del(&(tmp_element->list));
+	    	kfree(tmp_element);
+		}		
+		kfree(list);
         printk(KERN_INFO "message %s\n", "Lista destruida");
 	case BRIDGE_W_CS:
 	    raw_copy_from_user(&tmp, (struct complex_struct *)arg, sizeof(struct complex_struct));
