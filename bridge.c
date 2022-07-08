@@ -149,6 +149,9 @@ static long bridge_ioctl(struct file *f, unsigned int cmd, unsigned long arg){
 	     break;
 	case BRIDGE_CLEAN_L:
              printk(KERN_INFO "message %s\n", "bla18");
+
+
+			 
 	     break;
 	case BRIDGE_GREATER_VAL_L:
 	     //strcpy((char *)arg, "MensajePrueba");
